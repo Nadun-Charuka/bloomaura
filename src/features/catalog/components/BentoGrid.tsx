@@ -28,7 +28,7 @@ export function BentoGrid({ products, isMobile = false }: BentoGridProps) {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 sm:gap-5 md:gap-6"
         >
             {products.map((product, index) => (
                 <motion.div

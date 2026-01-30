@@ -87,50 +87,50 @@ export default function HomePage() {
       {/* Products Section */}
       <section id="products-section" className="py-12 md:py-16 lg:py-24 bg-gradient-to-b from-background to-floral-cream/30">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex gap-8">
-            {/* Desktop Sidebar */}
-            {!isMobile && (
-              <aside className="hidden w-64 flex-shrink-0 lg:block">
-                <FilterSidebar
-                  filters={filters}
-                  onFilterChange={setFilters}
-                  onReset={handleResetFilters}
-                />
-              </aside>
-            )}
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-6 md:mb-8"
+          >
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4 px-2"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            >
+              Our <span className="gradient-text-premium">Premium Collection</span>
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+              Handpicked bouquets crafted with love and care
+            </p>
+          </motion.div>
 
-            {/* Products Section */}
-            <div className="flex-1 space-y-6">
-              {/* Section Header */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-6 md:mb-8"
-              >
-                <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4 px-2"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                >
-                  Our <span className="gradient-text-premium">Premium Collection</span>
-                </h2>
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-                  Handpicked bouquets crafted with love and care
-                </p>
-              </motion.div>
+          {/* Dynamic Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-6 md:mb-8"
+          >
+            <DynamicBanner />
+          </motion.div>
 
-              {/* Dynamic Banner */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <DynamicBanner />
-              </motion.div>
+          {/* Products Layout */}
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+            {/* Desktop Sidebar - Hidden on Mobile */}
+            <aside className="hidden lg:block w-64 flex-shrink-0">
+              <FilterSidebar
+                filters={filters}
+                onFilterChange={setFilters}
+                onReset={handleResetFilters}
+              />
+            </aside>
 
+            {/* Products Content */}
+            <div className="flex-1 space-y-4 md:space-y-6">
               {/* Products Header */}
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>
                     Available Bouquets

@@ -73,7 +73,7 @@ export function DynamicBanner() {
                                 className={`glass cursor-pointer border-0 bg-gradient-to-r ${item.color} px-4 py-2 text-white shadow-lg transition-shadow hover:shadow-xl`}
                             >
                                 <span className="mr-2 text-lg">{item.emoji}</span>
-                                <span className="whitespace-nowrap font-medium">{item.title}</span>
+                                <span className="whitespace-nowrap font-medium text-black">{item.title}</span>
                             </Badge>
                         </motion.div>
                     ))}
