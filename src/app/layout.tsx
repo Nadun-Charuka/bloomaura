@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Outfit } from 'next/font/google';
 import './globals.css';
 import { SEO_METADATA, SITE_CONFIG } from '@/core/constants';
+import { StructuredData } from '@/components/seo/StructuredData';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
   creator: 'BloomAura',
   publisher: 'BloomAura',
   metadataBase: new URL(SITE_CONFIG.url),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: SITE_CONFIG.locale,
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
         url: SEO_METADATA.ogImage,
         width: 1200,
         height: 630,
-        alt: SITE_CONFIG.name,
+        alt: `${SITE_CONFIG.name} - Fresh Flower Bouquets in Sri Lanka`,
       },
     ],
   },
@@ -76,9 +80,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <StructuredData />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#F5E6F0" />
+        <meta name="geo.region" content="LK" />
+        <meta name="geo.placename" content="Colombo" />
+        <meta name="geo.position" content="6.9271;79.8612" />
+        <meta name="ICBM" content="6.9271, 79.8612" />
       </head>
       <body className={`${inter.variable} ${playfair.variable} ${outfit.variable} font-sans antialiased`}>
         {children}
