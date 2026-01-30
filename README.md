@@ -1,36 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BloomAura 🌸
 
-## Getting Started
+A premium flower bouquet e-commerce platform built with Next.js 15, targeting GenZ customers in Western Province, Sri Lanka.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🎨 **Premium UI/UX** - Glassmorphism design with floral color palette
+- 📱 **Fully Responsive** - Optimized for mobile, tablet, and desktop
+- 💬 **WhatsApp Integration** - Direct customer consultation via WhatsApp
+- 🔍 **Advanced Filtering** - Filter by price, availability, and occasion
+- ⚡ **Real-time Updates** - Live product availability with Supabase
+- 🎭 **Smooth Animations** - Framer Motion for delightful interactions
+- 🔐 **Admin Panel** - Secure product management (coming soon)
+- 🚀 **SEO Optimized** - Local SEO for "Fresh Flower Delivery Colombo"
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/UI
+- **Animations**: Framer Motion
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth (Google OAuth)
+- **Storage**: Supabase Storage
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── layout.tsx         # Root layout with SEO
+│   └── page.tsx           # Homepage
+├── components/
+│   └── ui/                # Shadcn UI components
+├── core/
+│   ├── constants/         # App constants
+│   ├── supabase/          # Supabase client
+│   └── types/             # TypeScript types
+└── features/              # Feature-Sliced Design
+    ├── catalog/
+    │   ├── components/    # Product cards, grid, filters
+    │   └── view-models/   # useCatalog hook (MVVM)
+    ├── whatsapp/
+    │   ├── components/    # WhatsApp button
+    │   └── utils/         # Message generation
+    └── admin/             # Admin panel (coming soon)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+ and npm
+- A Supabase account
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
+   ```bash
+   cd bloomaura
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Set up Supabase**
+   - Follow the detailed guide in [SUPABASE_SETUP.md](./SUPABASE_SETUP.md)
+   - Create a `.env.local` file with your credentials:
+     ```env
+     NEXT_PUBLIC_SUPABASE_URL=your-project-url
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+     NEXT_PUBLIC_ADMIN_EMAIL=your-email@example.com
+     ```
 
-## Deploy on Vercel
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. **Open your browser**
+   - Navigate to [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Customization
+
+### Update WhatsApp Number
+Edit `src/core/constants/index.ts`:
+```typescript
+export const WHATSAPP_NUMBER = '+94771234567'; // Your number
+```
+
+### Modify Color Palette
+Edit `src/app/globals.css` to change the floral color scheme.
+
+### Add/Edit Occasions
+Edit `src/core/constants/index.ts`:
+```typescript
+export const OCCASIONS = [
+  'Anniversary',
+  'Birthday',
+  // Add more...
+];
+```
+
+## 📦 Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## 🧪 Testing
+
+The project includes sample data for testing. To add your own products:
+
+1. Go to Supabase Table Editor
+2. Add products to the `products` table
+3. Upload images to the `product-images` storage bucket
+4. Update the `image_url` field with the public URL
+
+## 🎯 SEO Optimization
+
+The app is optimized for local SEO:
+- Meta tags for "Fresh Flower Delivery Colombo"
+- Open Graph tags for social sharing
+- Structured data ready
+- Optimized images with Next.js Image component
+
+## 🔐 Admin Panel (Coming Soon)
+
+The admin panel will include:
+- Google OAuth authentication
+- Product CRUD operations
+- Image upload functionality
+- Inventory management
+
+## 📄 License
+
+This project is private and proprietary.
+
+## 🤝 Support
+
+For issues or questions, please contact the development team.
+
+---
+
+Made with 💝 by BloomAura
