@@ -44,19 +44,22 @@ export function FilterDrawer({ filters, onFilterChange, onReset }: FilterDrawerP
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline" className="glass relative">
+                <Button
+                    variant="outline"
+                    className="glass-premium relative shadow-premium hover:shadow-premium-lg transition-all duration-300 active:scale-95 h-11 px-4"
+                >
                     <SlidersHorizontal className="mr-2 h-4 w-4" />
-                    Filters
+                    <span className="text-sm font-medium">Filters</span>
                     {hasActiveFilters && (
-                        <Badge className="ml-2 h-5 w-5 rounded-full p-0 text-xs">
+                        <Badge className="ml-2 h-5 w-5 rounded-full p-0 text-xs bg-primary">
                             {activeFilterCount}
                         </Badge>
                     )}
                 </Button>
             </DialogTrigger>
-            <DialogContent className="glass-card max-h-[80vh] overflow-y-auto">
-                <DialogHeader>
-                    <DialogTitle className="flex items-center justify-between">
+            <DialogContent className="glass-premium max-h-[85vh] overflow-y-auto rounded-3xl sm:max-w-md">
+                <DialogHeader className="pb-4">
+                    <DialogTitle className="flex items-center justify-between text-xl font-bold" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>
                         <span>Filter Products</span>
                         {hasActiveFilters && (
                             <Button
@@ -64,21 +67,22 @@ export function FilterDrawer({ filters, onFilterChange, onReset }: FilterDrawerP
                                 size="sm"
                                 onClick={() => {
                                     onReset();
-                                    setOpen(false);
                                 }}
-                                className="h-8 text-xs"
+                                className="h-9 text-xs hover:bg-destructive/10 hover:text-destructive active:scale-95"
                             >
-                                <X className="mr-1 h-3 w-3" />
+                                <X className="mr-1.5 h-4 w-4" />
                                 Reset All
                             </Button>
                         )}
                     </DialogTitle>
                 </DialogHeader>
 
-                <div className="space-y-6 py-4">
+                <div className="space-y-6 py-2">
                     {/* Price Sort */}
                     <div className="space-y-3">
-                        <label className="text-sm font-medium text-foreground">Sort by Price</label>
+                        <label className="text-sm font-semibold text-foreground" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>
+                            Sort by Price
+                        </label>
                         <Select
                             value={filters.price_sort || 'none'}
                             onValueChange={(value) =>
@@ -87,38 +91,40 @@ export function FilterDrawer({ filters, onFilterChange, onReset }: FilterDrawerP
                                 })
                             }
                         >
-                            <SelectTrigger className="glass">
+                            <SelectTrigger className="glass-premium h-12 shadow-premium">
                                 <SelectValue placeholder="Select order" />
                             </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="none">No sorting</SelectItem>
-                                <SelectItem value="asc">Low to High</SelectItem>
-                                <SelectItem value="desc">High to Low</SelectItem>
+                            <SelectContent className="glass-premium">
+                                <SelectItem value="none" className="h-11">No sorting</SelectItem>
+                                <SelectItem value="asc" className="h-11">Low to High</SelectItem>
+                                <SelectItem value="desc" className="h-11">High to Low</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
 
                     {/* Availability */}
                     <div className="space-y-3">
-                        <label className="text-sm font-medium text-foreground">Availability</label>
+                        <label className="text-sm font-semibold text-foreground" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>
+                            Availability
+                        </label>
                         <div className="flex flex-wrap gap-2">
                             <Badge
                                 variant={filters.availability === null ? 'default' : 'outline'}
-                                className="cursor-pointer px-4 py-2"
+                                className="cursor-pointer px-5 py-2.5 text-sm font-medium transition-all duration-200 active:scale-95 hover:shadow-premium"
                                 onClick={() => onFilterChange({ availability: null })}
                             >
                                 All
                             </Badge>
                             <Badge
                                 variant={filters.availability === true ? 'default' : 'outline'}
-                                className="cursor-pointer px-4 py-2"
+                                className="cursor-pointer px-5 py-2.5 text-sm font-medium transition-all duration-200 active:scale-95 hover:shadow-premium"
                                 onClick={() => onFilterChange({ availability: true })}
                             >
-                                Available
+                                ✓ Available
                             </Badge>
                             <Badge
                                 variant={filters.availability === false ? 'default' : 'outline'}
-                                className="cursor-pointer px-4 py-2"
+                                className="cursor-pointer px-5 py-2.5 text-sm font-medium transition-all duration-200 active:scale-95 hover:shadow-premium"
                                 onClick={() => onFilterChange({ availability: false })}
                             >
                                 Sold Out
@@ -128,20 +134,22 @@ export function FilterDrawer({ filters, onFilterChange, onReset }: FilterDrawerP
 
                     {/* Occasion */}
                     <div className="space-y-3">
-                        <label className="text-sm font-medium text-foreground">Occasion</label>
+                        <label className="text-sm font-semibold text-foreground" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>
+                            Occasion
+                        </label>
                         <Select
                             value={filters.occasion || 'none'}
                             onValueChange={(value) =>
                                 onFilterChange({ occasion: value === 'none' ? null : value })
                             }
                         >
-                            <SelectTrigger className="glass">
+                            <SelectTrigger className="glass-premium h-12 shadow-premium">
                                 <SelectValue placeholder="Select occasion" />
                             </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="none">All Occasions</SelectItem>
+                            <SelectContent className="glass-premium max-h-[300px]">
+                                <SelectItem value="none" className="h-11">All Occasions</SelectItem>
                                 {OCCASIONS.map((occasion) => (
-                                    <SelectItem key={occasion} value={occasion}>
+                                    <SelectItem key={occasion} value={occasion} className="h-11">
                                         {occasion}
                                     </SelectItem>
                                 ))}
@@ -152,7 +160,7 @@ export function FilterDrawer({ filters, onFilterChange, onReset }: FilterDrawerP
                     {/* Apply Button */}
                     <Button
                         onClick={() => setOpen(false)}
-                        className="w-full"
+                        className="w-full h-12 bg-gradient-to-r from-floral-pink to-floral-lavender hover:from-floral-rose hover:to-floral-pink text-white font-semibold shadow-premium-lg hover:shadow-glow transition-all duration-300 active:scale-95 rounded-xl"
                         size="lg"
                     >
                         Apply Filters
