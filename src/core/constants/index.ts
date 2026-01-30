@@ -1,5 +1,5 @@
 // WhatsApp Business Number
-export const WHATSAPP_NUMBER = '+94771234567'; // Replace with actual business number
+export const WHATSAPP_NUMBER = '+94760225917'; // Replace with actual business number
 
 // Occasion Categories
 export const OCCASIONS = [
